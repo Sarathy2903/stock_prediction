@@ -55,9 +55,10 @@ class StockPredictor:
 
     def predict_lstm(self, X):
         preds = self.lstm_model.predict(X)
-        dummy = np.zeros_like(preds)
-        merged = np.concatenate([preds, dummy], axis=1)
+        dummy_volume = np.zeros((preds.shape[0], 1))
+        merged = np.hstack((preds, dummy_volume))
         return self.scaler.inverse_transform(merged)[:, 0]
+
 
     def predict_arima(self, steps):
         return self.arima_model.forecast(steps=steps)
