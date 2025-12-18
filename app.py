@@ -23,9 +23,19 @@ class StockPredictor:
         self.data = None
 
     def fetch_data(self):
-        stock = yf.Ticker(self.symbol)
-        self.data = stock.history(start=self.start_date, end=self.end_date)
+        self.data = yf.download(
+            self.symbol,
+            start=self.start_date,
+            end=self.end_date,
+            progress=False
+        )
+
+        if self.data.empty:
+            st.error("❌ Invalid stock symbol or data not available")
+            st.stop()
+
         return self.data[['Close', 'Volume']].values
+
 
     def prepare_lstm_data(self, data, lookback=60):
         scaled = self.scaler.fit_transform(data)
