@@ -1,0 +1,14 @@
+| Library      | Purpose                  |
+| ------------ | ------------------------ |
+| Streamlit    | Web UI                   |
+| NumPy        | Math                     |
+| Pandas       | Data                     |
+| Matplotlib   | Graphs                   |
+| Datetime     | Date handling            |
+| MinMaxScaler | Normalize data           |
+| Metrics      | Accuracy check           |
+| LSTM         | Deep learning prediction |
+| ARIMA        | Statistical prediction   |
+| yFinance     | Stock data               |
+
+
